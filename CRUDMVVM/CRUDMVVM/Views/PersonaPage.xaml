@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRUDMVVM.Views.PersonaPage">
+    <ScrollView>
+        <StackLayout>
+
+            <Label TextColor="pink" Text="Id"/>
+            <Entry Text="{Binding Id}" IsEnabled="False"/>
+            <Label TextColor="violet" Text="Nombre"/>
+            <Entry TextColor="pink" Text="{Binding Nombre}"/>
+            <Label TextColor="violet" Text="Apellido"/>
+            <Entry TextColor="pink" Text="{Binding Apellido}"/>
+            <Label TextColor="violet" Text="Edad"/>
+            <Entry TextColor="pink" Text="{Binding Edad}" Keyboard="Numeric"/>
+            <Label TextColor="violet" Text="Direccion"/>
+            <Entry TextColor="pink" Text="{Binding Direccion}"/>
+            <Label TextColor="violet" Text="Puesto"/>
+            <Entry TextColor="pink" Text="{Binding Puesto}"/>
+            <Label Text="{Binding NombreCompleto}" TextColor="DarkBlue"/>
+
+            <Button BackgroundColor="LightGreen" TextColor="Black" Text="Guardar" Command="{Binding GuardadrCommand}"/>
+            <Button BackgroundColor="Cyan" TextColor="Black"  Text="Modificar" Command="{Binding ModificarCommand}"/>
+            <Button BackgroundColor="LightCoral" TextColor="Black"  Text="Eliminar" Command="{Binding EliminarCommand}"/>
+            <Button BackgroundColor="LightGray" TextColor="Black"  Text="Limpiar" Command="{Binding LimpiarCommand}"/>
+            
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+            
+            <ListView x:Name="lvPersonas" ItemsSource="{Binding Personas}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell TextColor="White" Text="{Binding Edad}" Detail="{Binding NombreCompleto}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
